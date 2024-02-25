@@ -1,0 +1,7 @@
+name: ClamAV
+description: Integration with ClamAV software for the AntiVirus module.
+type: module
+core_version_requirement: ^10.2 || ^11
+php: 8.1
+dependencies:
+  - antivirus:antivirus

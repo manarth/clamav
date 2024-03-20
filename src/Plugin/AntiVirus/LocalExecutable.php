@@ -2,7 +2,7 @@
 
 namespace Drupal\clamav\Plugin\AntiVirus;
 
-use Drupal\antivirus\Attribute\AntiVirus;
+use Drupal\antivirus_core\Attribute\AntiVirus;
 use Drupal\clamav\ScannerType;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\PluginFormInterface;

@@ -2,7 +2,7 @@
 
 namespace Drupal\clamav\Scanner;
 
-use Drupal\antivirus\ScannerInterface;
+use Drupal\antivirus_core\ScannerInterface;
 use Drupal\clamav\ClamAvVersion;
 
 /**

@@ -2,9 +2,9 @@
 
 namespace Drupal\clamav\Parser;
 
-use Drupal\antivirus\ScanOutcome;
-use Drupal\antivirus\ScanResult;
-use Drupal\antivirus\ScanResultInterface;
+use Drupal\antivirus_core\ScanOutcome;
+use Drupal\antivirus_core\ScanResult;
+use Drupal\antivirus_core\ScanResultInterface;
 use Drupal\clamav\ClamAvScanSummary;
 
 /**
@@ -35,7 +35,7 @@ class CommandResultParser {
   /**
    * The result determined after parsing the CLI results.
    *
-   * @return \Drupal\antivirus\ScanResultInterface
+   * @return \Drupal\antivirus_core\ScanResultInterface
    *   The scan result output.
    */
   public function parse() : ScanResultInterface {
@@ -53,7 +53,7 @@ class CommandResultParser {
   /**
    * Parse the output of a successful scan.
    *
-   * @return \Drupal\antivirus\ScanResultInterface
+   * @return \Drupal\antivirus_core\ScanResultInterface
    *   The scan result output.
    */
   protected function parseSuccess() : ScanResultInterface {
@@ -63,7 +63,7 @@ class CommandResultParser {
   /**
    * Parse the output of a infected file.
    *
-   * @return \Drupal\antivirus\ScanResultInterface
+   * @return \Drupal\antivirus_core\ScanResultInterface
    *   The scan result output.
    */
   protected function parseInfected() : ScanResultInterface {
@@ -78,7 +78,7 @@ class CommandResultParser {
   /**
    * Parse the output of a clamscan error.
    *
-   * @return \Drupal\antivirus\ScanResultInterface
+   * @return \Drupal\antivirus_core\ScanResultInterface
    *   The scan result output.
    */
   protected function parseError() : ScanResultInterface {

@@ -27,7 +27,7 @@ class UnixSocket extends DaemonScanner implements ClamAvScannerInterface {
    */
   protected function getConnection() {
     $address = sprintf('unix://%s', $this->socket);
-    $connection = stream_socket_client($address, $errno, $errstr, $this->timeout);
+    $connection = @stream_socket_client($address, $errno, $errstr, $this->timeout);
     if (!$connection) {
       throw new DaemonUnreachableException($errstr, $errno);
     }

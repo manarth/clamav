@@ -2,7 +2,7 @@
 
 namespace Drupal\clamav\Scanner;
 
-use Drupal\antivirus\ScanResultInterface;
+use Drupal\antivirus_core\ScanResultInterface;
 use Drupal\clamav\ClamAvVersion;
 use Drupal\clamav\Exception\ClamAvExceptionInterface;
 use Drupal\clamav\Exception\ClamAvNotFoundException;
@@ -11,7 +11,7 @@ use Drupal\clamav\Parser\LocalExecutableCommandResult;
 use Drupal\file\FileInterface;
 
 /**
- * Scan with a ClamAV daemon over a TCP/IP socket.
+ * Scan with a ClamAV local executable.
  */
 class LocalExecutable implements ClamAvScannerInterface {
 

@@ -2,8 +2,8 @@
 
 namespace Drupal\clamav\Plugin\AntiVirus;
 
-use Drupal\antivirus\PluginDefinition\AntiVirusPluginInterface;
-use Drupal\antivirus\ScanResultInterface;
+use Drupal\antivirus_core\PluginDefinition\AntiVirusPluginInterface;
+use Drupal\antivirus_core\ScanResultInterface;
 use Drupal\clamav\Scanner\ClamAvScannerInterface;
 use Drupal\clamav\ScannerType;
 use Drupal\clamav\Service\ClamAvScannerFactoryInterface;

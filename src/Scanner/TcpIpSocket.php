@@ -41,7 +41,7 @@ class TcpIpSocket extends DaemonScanner implements ClamAvScannerInterface {
    */
   protected function getConnection() {
     $address = sprintf('tcp://%s:%d', $this->hostname, $this->port);
-    $connection = stream_socket_client($address, $errno, $errstr, $this->timeout);
+    $connection = @stream_socket_client($address, $errno, $errstr, $this->timeout);
     if (!$connection) {
       throw new DaemonUnreachableException($errstr, $errno);
     }

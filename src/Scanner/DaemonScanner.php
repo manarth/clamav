@@ -2,9 +2,9 @@
 
 namespace Drupal\clamav\Scanner;
 
-use Drupal\antivirus\ScanOutcome;
-use Drupal\antivirus\ScanResult;
-use Drupal\antivirus\ScanResultInterface;
+use Drupal\antivirus_core\ScanOutcome;
+use Drupal\antivirus_core\ScanResult;
+use Drupal\antivirus_core\ScanResultInterface;
 use Drupal\clamav\ClamAvVersion;
 use Drupal\clamav\Exception\ClamAvExceptionInterface;
 use Drupal\clamav\Exception\ClamAvNotFoundException;

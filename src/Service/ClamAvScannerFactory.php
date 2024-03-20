@@ -16,7 +16,7 @@ class ClamAvScannerFactory implements ClamAvScannerFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function createScanner(ScannerType $type, array $params) : ClamAvScannerInterface {
+  public function createScanner(ScannerType $type, array $params = []) : ClamAvScannerInterface {
     return new $type->value(...$params);
   }
 
@@ -37,7 +37,7 @@ class ClamAvScannerFactory implements ClamAvScannerFactoryInterface {
   /**
    * {@inheritdoc}
    */
-  public function localExecutable(string $path) : LocalExecutable {
+  public function localExecutable(string $path, string $parameters = '') : LocalExecutable {
     return new (ScannerType::LOCAL_EXECUTABLE->value)($path);
   }
 

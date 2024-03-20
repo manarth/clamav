@@ -2,13 +2,22 @@
 
 namespace Drupal\clamav\Scanner;
 
-use Drupal\antivirus\ScannerInterface;
 use Drupal\clamav\Exception\DaemonUnreachableException;
 
 /**
  * Scan with a ClamAV daemon over a TCP/IP socket.
  */
 class TcpIpSocket extends DaemonScanner implements ClamAvScannerInterface {
+
+  /**
+   * By default, connect to a scanner running on the same host.
+   */
+  const DEFAULT_HOSTNAME = 'localhost';
+
+  /**
+   * ClamAV's default port is 3310.
+   */
+  const DEFAULT_PORT = 3310;
 
   /**
    * Constructor.
@@ -22,8 +31,8 @@ class TcpIpSocket extends DaemonScanner implements ClamAvScannerInterface {
    *   (optional) The time (in seconds) to wait for a connection to the daemon
    *   to succeed. Defaults to 5 seconds.
    */
-  public function __construct(protected string $hostname = 'localhost',
-                              protected int $port = 3310,
+  public function __construct(protected string $hostname = self::DEFAULT_HOSTNAME,
+                              protected int $port = self::DEFAULT_PORT,
                               protected int $timeout = 5) {
   }
 

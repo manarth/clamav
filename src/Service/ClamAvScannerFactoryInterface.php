@@ -53,12 +53,14 @@ interface ClamAvScannerFactoryInterface {
   /**
    * Create a ClamAV scanner which uses a local executable.
    *
-   * @param string $executable
+   * @param string $path
    *   The filepath to the ClamAV executable.
+   * @param string $parameters
+   *   (optional) Parameters to pass to the ClamAV executable.
    *
    * @return \Drupal\clamav\Scanner\LocalExecutable
    *   A LocalExecutable ClamAV scanner.
    */
-  public function localExecutable(string $path) : LocalExecutable;
+  public function localExecutable(string $path, string $parameters = '') : LocalExecutable;
 
 }

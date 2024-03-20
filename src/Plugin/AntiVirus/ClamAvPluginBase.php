@@ -2,25 +2,21 @@
 
 namespace Drupal\clamav\Plugin\AntiVirus;
 
-use Drupal\antivirus\Attribute\AntiVirus;
 use Drupal\antivirus\PluginDefinition\AntiVirusPluginInterface;
 use Drupal\antivirus\ScanResultInterface;
-use Drupal\clamav\Plugin\AntiVirus\Derivative\ClamAvPluginDeriver;
 use Drupal\clamav\Scanner\ClamAvScannerInterface;
+use Drupal\clamav\ScannerType;
 use Drupal\clamav\Service\ClamAvScannerFactoryInterface;
 use Drupal\Component\Plugin\PluginBase;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\file\FileInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * AntiVirus scanner plugin providing integration with ClamAV.
+ * Base plugin for each of the ClamAV scanner plugins.
  */
-#[AntiVirus(
-  'clamav',
-  ClamAvPluginDeriver::class
-)]
-class ClamAv extends PluginBase implements AntiVirusPluginInterface, ContainerFactoryPluginInterface {
+abstract class ClamAvPluginBase extends PluginBase implements AntiVirusPluginInterface, ContainerFactoryPluginInterface {
 
   /**
    * The ClamAV scanner service.
@@ -36,7 +32,7 @@ class ClamAv extends PluginBase implements AntiVirusPluginInterface, ContainerFa
     parent::__construct($configuration, $plugin_id, $plugin_definition);
 
     $this->scanner = $scanner_factory->createScanner(
-      $this->pluginDefinition['scanner'],
+      $this->getScannerType(),
       $configuration['clamav_settings'] ?? []
     );
   }
@@ -65,6 +61,25 @@ class ClamAv extends PluginBase implements AntiVirusPluginInterface, ContainerFa
    */
   public function isAvailable() : bool {
     return $this->scanner->isAvailable();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+  }
+
+  /**
+   * Fetch the type of ClamAV scanner used by this plugin.
+   */
+  protected function getScannerType() : ScannerType {
+    return static::SCANNER;
   }
 
 }

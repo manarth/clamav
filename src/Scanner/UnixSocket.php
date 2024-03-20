@@ -18,7 +18,7 @@ class UnixSocket extends DaemonScanner implements ClamAvScannerInterface {
    *   (optional) The time (in seconds) to wait for a connection to the daemon
    *   to succeed. Defaults to 5 seconds.
    */
-  public function __construct(protected string $socket,
+  public function __construct(protected string $socket = '',
                               protected int $timeout = 5) {
   }
 

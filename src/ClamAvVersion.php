@@ -7,12 +7,11 @@ namespace Drupal\clamav;
  */
 final class ClamAvVersion {
 
-  // Example version string:
-  // ClamAV 1.3.0/27189/Sun Feb 18 09:23:57 2024
+  // Example version string: "ClamAV 1.3.0/27189/Sun Feb 18 09:23:57 2024".
   const VERSION_PATTERN = '@^ClamAV (\d+\.\d+\.\d+)/(\d+)/(.+)$@';
 
   // The date-time format used in the version signature.
-  // For example: Sun Feb 18 09:23:57 2024
+  // For example: "Sun Feb 18 09:23:57 2024".
   const DATE_TIME_FORMAT = 'D M d H:i:s Y';
 
   /**
@@ -23,7 +22,7 @@ final class ClamAvVersion {
   protected string $version;
 
   /**
-   * The version number of the ClamAV virus signatures
+   * The version number of the ClamAV virus signatures.
    *
    * @var string
    */
@@ -46,7 +45,6 @@ final class ClamAvVersion {
     if (preg_match(self::VERSION_PATTERN, $versionRaw, $matches)) {
       $this->version          = $matches[1];
       $this->signatureVersion = $matches[2];
-      // @todo Supply the timezone.
       $this->signatureDate    = \DateTimeImmutable::createFromFormat(self::DATE_TIME_FORMAT, $matches[3]);
     }
   }
